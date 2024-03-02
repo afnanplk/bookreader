@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %} Books {% endblock %}
+
+{% block content %}
+{% load static %}
+    {% include 'shared_layout/navbar.html' %}
+
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="{% static '/assets/lib1.jpg' %}" class="d-block w-100" style="height: 500px;" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h1 class="fw-bold">BOOKS</h1>
+      </div>
+      </div>
+    </div>
+
+  <div style="text-align: center; margin-top: 20px; margin-bottom: 30px;">
+    
+        <a href="{% url 'base:addbook' add='add' %}" class="btn btn-primary btn-lg" style="color: white; text-decoration: none;width: 70rem;">Add Book</a>
+    
+</div>
+
+
+    {% for book in books %}
+    
+
+    <div class="container d-flex justify-content-center">
+        <div class="card mb-3" style="max-width: 570px;">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src="{% static '/assets/images.jpg' %}" class="img-fluid rounded-start" alt="...">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title text-uppercase font-weight-bold fw-bold">{{ book.genre }}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">{{ book.title }}</h6>
+                        <p class="card-text font-italic">By {{ book.author }}</p>
+                        <p class="card-text">{{ book.description }}</p>
+                        <!-- <a href="{% url 'base:books' slug=book.slug %}" class="btn btn-secondary btn-lg btn-block" style="width: 100%;">Details</a> -->
+                        <a href="{{ book.file.url }}" class="btn btn-primary btn-lg btn-block mt-2" style="width: 100%;">READ</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+  
+    
+    
+       
+    {% endfor %}
+    
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %} Book | {{ book.title }} {% endblock %}
+
+{% block content %}
+
+{% load static %}
+
+<div class="card text-center m-5" >
+    
+    <h3 class="card-header">
+        {{ book.genre }}
+    </h3>
+    <div class="card-body">
+      <h5 class="card-title"> {{ book.title }}</h5>
+      <h5 class="card-title"> {{ book.author }}</h5>
+      <h5 class="card-title">{{ book.description }} </h5>
+      <a href="{{ book.file.url }}" class="btn btn-primary btn-lg" style="width: 15rem;">READ</a>
+    </div>
+   
+  </div>
+
+        
+{% endblock %}
